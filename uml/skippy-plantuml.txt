@@ -1,28 +1,32 @@
 @startuml
-
+skinparam classAttributeIconSize 0
+ 
 class "Die" {
-  history : ConcurrentHashMap<Direction, Long>
-  random : Random
-  printStats()
-  roll() : Direction
+  {field} {static} -instance: Die
+  {field} -history : Map<Direction, long>
+  {field} -random : Random
+  {method} +printStats()
+  {method} +roll() : Direction
 }
 
 enum "Direction" {
-  NORTH
-  EAST
-  SOUTH
-  WEST
+  {field} +NORTH
+  {field} +EAST
+  {field} +SOUTH
+  {field} +WEST
 }
 
 class "Grid" {
-  dimension : long
-  items : ConcurrentHashMap<GridItem, Point>
-  getItemLocation(GridItem) : Point
-  moveItem(GridItem, Direction) : Point
-  placeItem(GridItem, Point)
+  {field} -dimension : long
+  {field} -items : Map<GridItem, Point>
+  {method} +getItemLocation(GridItem) : Point
+  {method} +moveItem(GridItem, Direction) : Point
+  {method} +placeItem(GridItem, Point)
 }
 
-class "GridException"
+class "GridException" {
+  {field} +message : string
+}
 
 interface "GridItem"
 
@@ -33,34 +37,33 @@ class "ItemExistsException"
 class "ItemNotFoundException"
 
 class "Kangaroo" {
-  die : Die
-  chortle(String)
-  findHome(Grid, GridItem)
+  {field} -die : Die
+  {method} +chortle(String)
+  {method} +findHome(Grid, GridItem)
 }
 
 class "OutOfBoundsException" {
-  location : Point
+  {field} +location : Point
 }
 
 class "Point" {
-  x : long
-  y : long
-  getNeighbour(Direction) : Point
+  {field} +x : long
+  {field} +y : long
+  {method} +getNeighbour(Direction) : Point
 }
 
+"Die" --> "Die" : instance
 "Die" --> "Direction" : history
 "Grid" --> "Direction" : use
 "GridException" <|-- "InvalidDimensionException"
 "GridException" <|-- "ItemExistsException"
 "GridException" <|-- "ItemNotFoundException"
 "GridException" <|-- "OutOfBoundsException"
+"GridItem" <|.. "Kangaroo"
 "Grid" --> "GridItem" : items
-"GridItem" <-> "Kangaroo"
 "Grid" --> "Point" : items
 "Kangaroo" --> "Die" : die
 "Kangaroo" --> "Grid" : use
 "OutOfBoundsException" --> "Point" : location
 "Point" --> "Direction" : use
-
 @enduml
-Process finished with exit code 0

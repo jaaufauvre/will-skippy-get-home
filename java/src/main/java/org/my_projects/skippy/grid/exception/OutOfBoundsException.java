@@ -4,7 +4,7 @@ import org.my_projects.skippy.grid.Point;
 
 import java.text.MessageFormat;
 
-public class OutOfBoundsException extends GridException {
+public final class OutOfBoundsException extends GridException {
 
     private final transient Point location;
 

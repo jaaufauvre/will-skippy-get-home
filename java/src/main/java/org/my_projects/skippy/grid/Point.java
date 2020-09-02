@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * A point on a grid, defined by a pair of coordinates.
  */
-public class Point {
+public final class Point {
 
     private final long x;
     private final long y;

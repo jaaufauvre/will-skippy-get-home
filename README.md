@@ -9,7 +9,8 @@ See [Part I: Basic Simulation](https://csserver.ucd.ie/~meloc/MScASE/resources/s
 
 ## Usage
 ### Maven
-Run `mvn exec:java "-Dexec.mainClass=org.my_projects.skippy.Main"`
+* Run tests: `mvn test`
+* Run the program: `mvn exec:java "-Dexec.mainClass=org.my_projects.skippy.Main"`
 
 ### Sample Output
 ```
