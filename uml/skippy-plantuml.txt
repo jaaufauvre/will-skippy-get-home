@@ -1,0 +1,66 @@
+@startuml
+
+class "Die" {
+  history : ConcurrentHashMap<Direction, Long>
+  random : Random
+  printStats()
+  roll() : Direction
+}
+
+enum "Direction" {
+  NORTH
+  EAST
+  SOUTH
+  WEST
+}
+
+class "Grid" {
+  dimension : long
+  items : ConcurrentHashMap<GridItem, Point>
+  getItemLocation(GridItem) : Point
+  moveItem(GridItem, Direction) : Point
+  placeItem(GridItem, Point)
+}
+
+class "GridException"
+
+interface "GridItem"
+
+class "InvalidDimensionException"
+
+class "ItemExistsException"
+
+class "ItemNotFoundException"
+
+class "Kangaroo" {
+  die : Die
+  chortle(String)
+  findHome(Grid, GridItem)
+}
+
+class "OutOfBoundsException" {
+  location : Point
+}
+
+class "Point" {
+  x : long
+  y : long
+  getNeighbour(Direction) : Point
+}
+
+"Die" --> "Direction" : history
+"Grid" --> "Direction" : use
+"GridException" <|-- "InvalidDimensionException"
+"GridException" <|-- "ItemExistsException"
+"GridException" <|-- "ItemNotFoundException"
+"GridException" <|-- "OutOfBoundsException"
+"Grid" --> "GridItem" : items
+"GridItem" <-> "Kangaroo"
+"Grid" --> "Point" : items
+"Kangaroo" --> "Die" : die
+"Kangaroo" --> "Grid" : use
+"OutOfBoundsException" --> "Point" : location
+"Point" --> "Direction" : use
+
+@enduml
+Process finished with exit code 0

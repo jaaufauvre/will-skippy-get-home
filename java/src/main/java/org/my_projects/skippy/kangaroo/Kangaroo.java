@@ -10,6 +10,8 @@ import java.text.MessageFormat;
 
 public final class Kangaroo implements GridItem {
 
+    private final Die die = Die.getInstance();
+
     /**
      * Make the Kangaroo say something.
      */
@@ -32,7 +34,7 @@ public final class Kangaroo implements GridItem {
 
     private void takeRandomHop(Grid grid) throws ItemNotFoundException {
         try {
-            var randomDirection = Die.getInstance().roll();
+            var randomDirection = die.roll();
             var location = grid.moveItem(this, randomDirection);
             chortle(MessageFormat.format("Hopped to: {0}", location));
         } catch (OutOfBoundsException e) {
