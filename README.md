@@ -6,11 +6,16 @@ See [Part I: Basic Simulation](https://csserver.ucd.ie/~meloc/MScASE/resources/s
 
 ## Compatibility
 * Java 10+
+* Ruby 2.7+
 
 ## Usage
-### Maven
+### Java
 * Run tests: `mvn test`
 * Run the program: `mvn exec:java "-Dexec.mainClass=org.my_projects.skippy.Main"`
+
+### Ruby
+* Run tests: `./bin/setup` to install dependencies, then `rake test`
+* Run the program: `ruby ./bin/console`
 
 ### Sample Output
 ```
