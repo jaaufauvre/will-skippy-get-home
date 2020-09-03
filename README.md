@@ -47,7 +47,7 @@ North: 24.9% South: 25.1% East: 25.1% West: 25.0%
 * `Die` records and prints the throw history and statistics
 * The outputs of this program are because of Skippy chortling or the die being asked to print its statistics.
 
-[![](./uml/skippy-plantuml.svg)](./uml/skippy-plantuml.txt)
+[![](./uml/skippy-plantuml.svg)](./uml/skippy-plantuml.svg)
 
 ## Read Also
 * https://en.wikipedia.org/wiki/Markov_chain
