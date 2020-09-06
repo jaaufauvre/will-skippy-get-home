@@ -19,7 +19,7 @@ See [Part I: Basic Simulation](https://csserver.ucd.ie/~meloc/MScASE/resources/s
 
 ### Ruby
 * Install dependencies: `./bin/setup`
-* Run tests: `rake test`
+* Run tests: `bundle exec rake`
 * Run the program: `ruby ./bin/console`
 
 ### Sample Output
