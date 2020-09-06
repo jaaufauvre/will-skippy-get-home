@@ -1,4 +1,8 @@
 # will-skippy-get-home
+
+[![](https://github.com/jaaufauvre/will-skippy-get-home/workflows/Java/badge.svg)](https://github.com/jaaufauvre/will-skippy-get-home/actions?query=workflow%3AJava)
+[![](https://github.com/jaaufauvre/will-skippy-get-home/workflows/Ruby/badge.svg)](https://github.com/jaaufauvre/will-skippy-get-home/actions?query=workflow%3ARuby)
+
 Will Skippy Get Home? 
 
 ## Overview
