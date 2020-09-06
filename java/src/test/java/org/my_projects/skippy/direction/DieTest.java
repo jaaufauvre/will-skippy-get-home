@@ -35,11 +35,6 @@ class DieTest {
         System.setOut(systemOutStream);
 
         // THEN
-        /*
-        Die statistics:
-        Total throws: 100
-        North: 25% South: 25% East: 25% West: 25%
-        */
         var floatRegExp = "[+-]?([0-9]*[.])?[0-9]+";
         var statsRegExp = "Die statistics:\\s" +
                 "Total throws: " + floatRegExp + "\\s" +
