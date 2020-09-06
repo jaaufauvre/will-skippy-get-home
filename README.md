@@ -18,7 +18,8 @@ See [Part I: Basic Simulation](https://csserver.ucd.ie/~meloc/MScASE/resources/s
 * Run the program: `mvn exec:java "-Dexec.mainClass=org.my_projects.skippy.Main"`
 
 ### Ruby
-* Run tests: `./bin/setup` to install dependencies, then `rake test`
+* Install dependencies: `./bin/setup`
+* Run tests: `rake test`
 * Run the program: `ruby ./bin/console`
 
 ### Sample Output
@@ -37,10 +38,10 @@ Hopped to: (98, 98)
 Hopped to: (98, 99)
 Oops, hit the boundary: (98, 100)
 Hopped to: (99, 99)
-Finished in 119,044 hops!
+Finished in 119044 hops!
 
 Die statistics:
-Total throws: 119,044
+Total throws: 119044
 North: 24.9% South: 25.1% East: 25.1% West: 25.0%
 ```
 

@@ -10,20 +10,20 @@ import java.util.Objects;
  */
 public final class Point {
 
-    private final long x;
-    private final long y;
+    private final long xCoordinate;
+    private final long yCoordinate;
     
-    public Point(long x, long y) {
-        this.x = x;
-        this.y = y;
+    public Point(long xCoordinate, long yCoordinate) {
+        this.xCoordinate = xCoordinate;
+        this.yCoordinate = yCoordinate;
     }
 
-    public long getX() {
-        return x;
+    public long getXCoordinate() {
+        return xCoordinate;
     }
 
-    public long getY() {
-        return y;
+    public long getYCoordinate() {
+        return yCoordinate;
     }
 
     /**
@@ -33,21 +33,21 @@ public final class Point {
     public Point getNeighbour(Direction direction) {
         switch (direction) {
             case EAST:
-                return new Point(x + 1, y);
+                return new Point(xCoordinate + 1, yCoordinate);
             case WEST:
-                return new Point(x - 1, y);
+                return new Point(xCoordinate - 1, yCoordinate);
             case NORTH:
-                return new Point(x, y + 1);
+                return new Point(xCoordinate, yCoordinate + 1);
             case SOUTH:
-                return new Point(x, y - 1);
+                return new Point(xCoordinate, yCoordinate - 1);
             default:
-                throw new IllegalStateException(String.format("Unsupported direction: %s!", direction));
+                throw new IllegalArgumentException(String.format("Unsupported direction: %s!", direction));
         }
     }
 
     @Override
     public String toString() {
-        return MessageFormat.format("({0}, {1})", x, y);
+        return MessageFormat.format("({0}, {1})", xCoordinate, yCoordinate);
     }
 
     @Override
@@ -55,12 +55,12 @@ public final class Point {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         var point = (Point) o;
-        return x == point.x &&
-                y == point.y;
+        return xCoordinate == point.xCoordinate &&
+                yCoordinate == point.yCoordinate;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(x, y);
+        return Objects.hash(xCoordinate, yCoordinate);
     }
 }

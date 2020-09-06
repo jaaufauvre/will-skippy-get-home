@@ -12,12 +12,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class DieTest {
 
     @Test
-    void getInstance_ShouldReturnSameInstance() {
+    void getInstance_ShouldAlwaysReturnSameInstance() {
         assertSame(Die.getInstance(), Die.getInstance());
     }
 
     @Test
-    void roll_ShouldReturnDirection() {
+    void roll_ShouldReturnRandomDirection() {
         assertNotNull(Die.getInstance().roll());
     }
 

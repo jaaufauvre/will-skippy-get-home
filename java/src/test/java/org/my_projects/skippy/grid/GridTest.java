@@ -1,7 +1,6 @@
 package org.my_projects.skippy.grid;
 
 import org.junit.jupiter.api.Test;
-import org.my_projects.skippy.grid.exception.InvalidDimensionException;
 import org.my_projects.skippy.grid.exception.ItemExistsException;
 import org.my_projects.skippy.grid.exception.ItemNotFoundException;
 import org.my_projects.skippy.grid.exception.OutOfBoundsException;
@@ -13,16 +12,16 @@ import static org.my_projects.skippy.direction.Direction.*;
 class GridTest {
 
     @Test
-    void constructor_ShouldThrowInvalidDimensionException_WhenDimensionNotAPositiveInteger() {
-        var exception1 = assertThrows(InvalidDimensionException.class, () -> new Grid(0));
-        var exception2 = assertThrows(InvalidDimensionException.class, () -> new Grid(-10));
+    void constructor_ShouldThrowIllegalArgumentException_WhenDimensionNotAPositiveInteger() {
+        var exception1 = assertThrows(IllegalArgumentException.class, () -> new Grid(0));
+        var exception2 = assertThrows(IllegalArgumentException.class, () -> new Grid(-10));
         var expectedErrorMessage = "Dimension of the grid must be a positive integer!";
         assertEquals(expectedErrorMessage, exception1.getMessage());
         assertEquals(expectedErrorMessage, exception2.getMessage());
     }
 
     @Test
-    void placeItem_ShouldAddItemAtGivenLocation() throws Exception {
+    void placeItem_ShouldPlaceItemAtGivenLocation() throws Exception {
 
         // GIVEN
         var gridItem = new GridItem() {};
@@ -51,7 +50,7 @@ class GridTest {
     }
 
     @Test
-    void placeItem_ShouldThrowOutOfBoundsException_WhenItemAddedOutsideTheGrid() throws Exception {
+    void placeItem_ShouldThrowOutOfBoundsException_WhenItemPlacedOutsideTheGrid() {
 
         // GIVEN
         var gridItem = new GridItem() {};
@@ -74,13 +73,13 @@ class GridTest {
         grid.placeItem(gridItem, new Point(3, 4));
 
         // WHEN & THEN
-        grid.moveItem(gridItem, NORTH);
+        assertEquals(new Point(3, 5), grid.moveItem(gridItem, NORTH));
         assertEquals(new Point(3, 5), grid.getItemLocation(gridItem));
-        grid.moveItem(gridItem, SOUTH);
+        assertEquals(new Point(3, 4), grid.moveItem(gridItem, SOUTH));
         assertEquals(new Point(3, 4), grid.getItemLocation(gridItem));
-        grid.moveItem(gridItem, EAST);
+        assertEquals(new Point(4, 4), grid.moveItem(gridItem, EAST));
         assertEquals(new Point(4, 4), grid.getItemLocation(gridItem));
-        grid.moveItem(gridItem, WEST);
+        assertEquals(new Point(3, 4), grid.moveItem(gridItem, WEST));
         assertEquals(new Point(3, 4), grid.getItemLocation(gridItem));
     }
 
@@ -101,7 +100,7 @@ class GridTest {
     }
 
     @Test
-    void moveItem_ShouldThrowItemNotFoundException_WhenItemNotOnTheGrid() throws Exception {
+    void moveItem_ShouldThrowItemNotFoundException_WhenItemNotOnTheGrid() {
 
         // GIVEN
         var gridItem = new GridItem() {};
@@ -127,7 +126,7 @@ class GridTest {
     }
 
     @Test
-    void getItemLocation_ShouldThrowItemNotFoundException_WhenItemNotOnTheGrid() throws Exception {
+    void getItemLocation_ShouldThrowItemNotFoundException_WhenItemNotOnTheGrid() {
 
         // GIVEN
         var gridItem = new GridItem() {};

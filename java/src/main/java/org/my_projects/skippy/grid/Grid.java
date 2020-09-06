@@ -1,7 +1,6 @@
 package org.my_projects.skippy.grid;
 
 import org.my_projects.skippy.direction.Direction;
-import org.my_projects.skippy.grid.exception.InvalidDimensionException;
 import org.my_projects.skippy.grid.exception.ItemExistsException;
 import org.my_projects.skippy.grid.exception.ItemNotFoundException;
 import org.my_projects.skippy.grid.exception.OutOfBoundsException;
@@ -18,9 +17,9 @@ public final class Grid {
     /** Items placed on the grid so far */
     private final ConcurrentHashMap<GridItem, Point> items = new ConcurrentHashMap<>();
 
-    public Grid(long dimension) throws InvalidDimensionException {
+    public Grid(long dimension) throws IllegalArgumentException {
         if (dimension < 1) {
-            throw new InvalidDimensionException();
+            throw new IllegalArgumentException("Dimension of the grid must be a positive integer!");
         }
         this.dimension = dimension;
     }
@@ -52,8 +51,8 @@ public final class Grid {
     }
 
     private void checkBounds(Point location) throws OutOfBoundsException {
-        var x = location.getX();
-        var y = location.getY();
+        var x = location.getXCoordinate();
+        var y = location.getYCoordinate();
         if (x < 0 || y < 0 || x > dimension - 1 || y > dimension - 1) {
             throw new OutOfBoundsException(location);
         }

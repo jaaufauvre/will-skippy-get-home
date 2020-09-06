@@ -12,17 +12,17 @@ import static org.my_projects.skippy.direction.Direction.WEST;
 class PointTest {
 
     @Test
-    void getX() {
-        assertEquals(4L, new Point(4,5).getX());
+    void getXCoordinate_ShouldReturnTheXCoordinate() {
+        assertEquals(4L, new Point(4,5).getXCoordinate());
     }
 
     @Test
-    void getY() {
-        assertEquals(5L, new Point(4,5).getY());
+    void getYCoordinate_ShouldReturnTheYCoordinate() {
+        assertEquals(5L, new Point(4,5).getYCoordinate());
     }
 
     @Test
-    void getNeighbour_ShouldReturnNeighbours() {
+    void getNeighbour_ShouldReturnNeighbourPoints() {
         var point = new Point(0, 0);
         assertEquals(new Point(0, 1), point.getNeighbour(NORTH));
         assertEquals(new Point(0, -1), point.getNeighbour(SOUTH));
@@ -31,12 +31,13 @@ class PointTest {
     }
 
     @Test
-    void testToString() {
+    void testToString_ShouldHaveAStringRepresentation() {
         assertEquals("(4, 5)", new Point(4,5).toString());
+        assertEquals("(-4, -5)", new Point(-4,-5).toString());
     }
 
     @Test
-    void testEquals() {
+    void testEquals_ShouldSupportComparison() {
         assertEquals(new Point(4,5), new Point(4,5));
         assertNotEquals(new Point(1,2), new Point(3,4));
     }

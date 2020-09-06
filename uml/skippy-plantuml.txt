@@ -30,8 +30,6 @@ class "GridException" {
 
 interface "GridItem"
 
-class "InvalidDimensionException"
-
 class "ItemExistsException"
 
 class "ItemNotFoundException"
@@ -47,15 +45,14 @@ class "OutOfBoundsException" {
 }
 
 class "Point" {
-  {field} +x : long
-  {field} +y : long
+  {field} +xCoordinate : long
+  {field} +yCoordinate : long
   {method} +getNeighbour(Direction) : Point
 }
 
 "Die" --> "Die" : instance
 "Die" --> "Direction" : history
 "Grid" --> "Direction" : use
-"GridException" <|-- "InvalidDimensionException"
 "GridException" <|-- "ItemExistsException"
 "GridException" <|-- "ItemNotFoundException"
 "GridException" <|-- "OutOfBoundsException"
