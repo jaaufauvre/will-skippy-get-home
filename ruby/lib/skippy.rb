@@ -22,6 +22,6 @@ module Skippy
   skippy.find_home(grid, home)
 
   # Print die statistics
-  puts
+  puts ''
   Die.instance.print_stats
 end

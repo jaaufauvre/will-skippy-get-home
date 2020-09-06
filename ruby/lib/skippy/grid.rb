@@ -48,10 +48,9 @@ class Grid
   def check_bounds(location)
     x = location.x_coordinate
     y = location.y_coordinate
-    if (x.negative? || y.negative? || x > @dimension - 1 || y > @dimension - 1)
-      message = "This location is outside the grid: #{location}!"
-      raise OutOfBoundsError.new(message, location)
-    end
+    out_of_bounds = x.negative? || y.negative? || x > @dimension - 1 || y > @dimension - 1
+    message = "This location is outside the grid: #{location}!"
+    raise OutOfBoundsError.new(message, location) if out_of_bounds
   end
 
   private :check_bounds
