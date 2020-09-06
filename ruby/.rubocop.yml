@@ -5,3 +5,5 @@ Metrics/BlockLength:
     - 'Rakefile'
     - '**/*.rake'
     - 'test/**/*.rb'
+Style/Documentation:
+  Enabled: false

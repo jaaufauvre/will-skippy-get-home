@@ -1,30 +1,27 @@
 # frozen_string_literal: true
 
 require 'skippy/version'
-require 'skippy/die'
+require 'skippy/grid'
+require 'skippy/kangaroo'
 
-# Top-level module for solving "Will Skippy Get Home?"
 module Skippy
-  class Error < StandardError; end
-
   # Create a grid
-  # TODO
+  puts('Enter dimension of the grid (>=1):')
+  dimension = gets.to_i
+  grid = Grid.new(dimension)
 
   # Place Skippy on the grid
-  # TODO
+  skippy = Kangaroo.new
+  grid.place_item(skippy, Point.new(0, 0))
 
   # Place Skippy's home on the grid
-  # TODO
+  home = GridItem.new
+  grid.place_item(home, Point.new(dimension - 1, dimension - 1))
 
   # Ask skippy to find his home
-  # TODO
+  skippy.find_home(grid, home)
 
   # Print die statistics
-  # TODO
-
-  # Temp!
-  1_000_000.times do
-    Die.instance.roll
-  end
-  puts Die.instance.print_stats
+  puts
+  Die.instance.print_stats
 end

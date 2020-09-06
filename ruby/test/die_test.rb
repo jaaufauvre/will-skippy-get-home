@@ -10,7 +10,7 @@ describe Die do
     end
   end
 
-  it 'should return the same instance' do
+  it 'should always return the same instance' do
     _(Die.instance).must_equal(Die.instance)
   end
 
