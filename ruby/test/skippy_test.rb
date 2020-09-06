@@ -1,11 +1,9 @@
-require "test_helper"
+# frozen_string_literal: true
 
-class SkippyTest < Minitest::Test
-  def test_that_it_has_a_version_number
-    refute_nil ::Skippy::VERSION
-  end
+require './test/test_helper'
 
-  def test_it_does_something_useful
-    assert true
+describe Skippy do
+  it 'should have a version' do
+    _(Skippy::VERSION).wont_be_nil
   end
 end

@@ -1,0 +1,7 @@
+Style/EndOfLine:
+  EnforcedStyle: native
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'test/**/*.rb'
