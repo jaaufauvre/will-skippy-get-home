@@ -38,4 +38,11 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/jaaufauvre/will-skippy-get-home</url>
+        </repository>
+    </distributionManagement>
 </project>
