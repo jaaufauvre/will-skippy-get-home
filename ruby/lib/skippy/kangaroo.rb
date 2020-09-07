@@ -2,5 +2,6 @@
 
 require_relative './kangaroo/kangaroo'
 
-module Kangaroo
+module Skippy
+  module Kangaroo; end
 end

@@ -3,25 +3,25 @@
 require './test/test_helper'
 require 'skippy/direction'
 
-describe Direction::Die do
+describe Skippy::Direction::Die do
   it 'should raise NoMethodError when calling new' do
     assert_raises NoMethodError do
-      Direction::Die.new
+      Skippy::Direction::Die.new
     end
   end
 
   it 'should always return the same instance' do
-    _(Direction::Die.instance).must_equal(Direction::Die.instance)
+    _(Skippy::Direction::Die.instance).must_equal(Skippy::Direction::Die.instance)
   end
 
   it 'should return a random direction' do
-    _(Direction::Die.instance.roll).wont_be_empty
+    _(Skippy::Direction::Die.instance.roll).wont_be_empty
   end
 
   it 'should print stats to stdout' do
-    Direction::Die.instance.roll
+    Skippy::Direction::Die.instance.roll
     out, = capture_io do
-      Direction::Die.instance.print_stats
+      Skippy::Direction::Die.instance.print_stats
     end
     _(out).must_match(build_die_stats_regexp)
   end

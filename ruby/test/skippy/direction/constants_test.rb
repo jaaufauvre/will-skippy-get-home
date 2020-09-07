@@ -3,9 +3,9 @@
 require './test/test_helper'
 require 'skippy/direction'
 
-describe Direction do
+describe Skippy::Direction do
   it 'should support direction comparison' do
-    _(Direction::NORTH).must_equal(Direction::NORTH)
-    _(Direction::WEST).wont_equal(Direction::NORTH)
+    _(Skippy::Direction::NORTH).must_equal(Skippy::Direction::NORTH)
+    _(Skippy::Direction::WEST).wont_equal(Skippy::Direction::NORTH)
   end
 end

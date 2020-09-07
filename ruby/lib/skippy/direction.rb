@@ -3,5 +3,6 @@
 require_relative './direction/constants'
 require_relative './direction/die'
 
-module Direction
+module Skippy
+  module Direction; end
 end
