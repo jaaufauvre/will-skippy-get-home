@@ -1,9 +1,7 @@
-# will-skippy-get-home
+# Will Skippy Get Home? 
 
 [![](https://github.com/jaaufauvre/will-skippy-get-home/workflows/Java/badge.svg)](https://github.com/jaaufauvre/will-skippy-get-home/actions?query=workflow%3AJava)
 [![](https://github.com/jaaufauvre/will-skippy-get-home/workflows/Ruby/badge.svg)](https://github.com/jaaufauvre/will-skippy-get-home/actions?query=workflow%3ARuby)
-
-Will Skippy Get Home? 
 
 ## Overview
 A lost, blind kangaroo (Skippy) starts in position `(0,0)` of a grid, and is trying to get home, which happens to be at cell `(dimension - 1, dimension - 1)`. 
