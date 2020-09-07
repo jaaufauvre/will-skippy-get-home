@@ -3,7 +3,7 @@
 require_relative 'lib/skippy/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'skippy'
+  spec.name          = 'will-skippy-get-home'
   spec.version       = Skippy::VERSION
   spec.authors       = ['Aufauvre, Jean-Alexis']
   spec.email         = ['jean-alexis.aufauvre@outlook.com']
