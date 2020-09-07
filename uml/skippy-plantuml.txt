@@ -60,7 +60,7 @@ namespace Skippy::Grid {
       {field} +y_coordinate : Integer
       {method} +get_neighbour(Direction) : Point
       {method} +to_s : String
-      {method} +==(Point) : Boolean
+      {method} +==(Point) : TrueClass or FalseClass
     }
 
     class ItemExistsError
