@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
-# Cardinal directions
-class Direction
-  private_class_method :new
+require_relative './direction/constants'
+require_relative './direction/die'
 
-  NORTH = :north
-  EAST = :east
-  SOUTH = :south
-  WEST = :west
+module Direction
 end

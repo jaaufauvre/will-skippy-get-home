@@ -1,27 +1,27 @@
 # frozen_string_literal: true
 
 require './test/test_helper'
-require 'skippy/die'
+require 'skippy/direction'
 
-describe Die do
+describe Direction::Die do
   it 'should raise NoMethodError when calling new' do
     assert_raises NoMethodError do
-      Die.new
+      Direction::Die.new
     end
   end
 
   it 'should always return the same instance' do
-    _(Die.instance).must_equal(Die.instance)
+    _(Direction::Die.instance).must_equal(Direction::Die.instance)
   end
 
   it 'should return a random direction' do
-    _(Die.instance.roll).wont_be_empty
+    _(Direction::Die.instance.roll).wont_be_empty
   end
 
   it 'should print stats to stdout' do
-    Die.instance.roll
+    Direction::Die.instance.roll
     out, = capture_io do
-      Die.instance.print_stats
+      Direction::Die.instance.print_stats
     end
     _(out).must_match(build_die_stats_regexp)
   end

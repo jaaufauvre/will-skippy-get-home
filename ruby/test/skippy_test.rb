@@ -3,7 +3,7 @@
 require './test/test_helper'
 
 describe Skippy do
-  it 'should have a version' do
+  it 'should have a module version' do
     _(Skippy::VERSION).wont_be_nil
   end
 end
