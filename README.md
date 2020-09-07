@@ -57,6 +57,7 @@ North: 24.9% South: 25.1% East: 25.1% West: 25.0%
 * Classes are grouped into 3 modules: `Skippy::Direction`, `Skippy::Grid` and `Skippy::Kangaroo`
 * The outputs of this program are because of Skippy chortling or the die printing its statistics.
 
+
 [![](./uml/skippy-plantuml.svg)](./uml/skippy-plantuml.svg)
 
 ## Read Also
