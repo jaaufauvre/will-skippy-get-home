@@ -15,7 +15,7 @@ describe Skippy::Kangaroo::Kangaroo do
     # GIVEN
     grid = Skippy::Grid::Grid.new(5)
     kangaroo = Skippy::Kangaroo::Kangaroo.new
-    home = Skippy::Grid::GridItem.new
+    home = Skippy::Kangaroo::Home.new
     grid.place_item(kangaroo, Skippy::Grid::Point.new(0, 0))
     grid.place_item(home, Skippy::Grid::Point.new(4, 4))
 

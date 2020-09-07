@@ -3,10 +3,10 @@ skinparam classAttributeIconSize 0
  
 class "Die" {
   {field} {static} -instance: Die
-  {field} -history : Map<Direction, long>
+  {field} -history : Hash<Direction, Integer>
   {field} -random : Random
-  {method} +print_stats
   {method} +roll : Direction
+  {method} +print_stats  
 }
 
 enum "Direction" {
@@ -17,18 +17,18 @@ enum "Direction" {
 }
 
 class "Grid" {
-  {field} -dimension : long
-  {field} -items : Map<GridItem, Point>
-  {method} +get_item_location(GridItem) : Point
-  {method} +move_item(GridItem, Direction) : Point
-  {method} +place_item(GridItem, Point)
+  {field} -dimension : Integer
+  {field} -items : Hash<Object, Point>
+  {method} +place_item(Object, Point)
+  {method} +get_item_location(Object) : Point
+  {method} +move_item(Object, Direction) : Point
 }
 
 class "StandardError" {
   {field} +message : String
 }
 
-interface "GridItem"
+class "Home"
 
 class "ItemExistsError"
 
@@ -37,7 +37,7 @@ class "ItemNotFoundError"
 class "Kangaroo" {
   {field} -die : Die
   {method} +chortle(String)
-  {method} +find_home(Grid, GridItem)
+  {method} +find_home(Grid, Home)
 }
 
 class "OutOfBoundsError" {
@@ -45,8 +45,8 @@ class "OutOfBoundsError" {
 }
 
 class "Point" {
-  {field} +x_coordinate : long
-  {field} +y_coordinate : long
+  {field} +x_coordinate : Integer
+  {field} +y_coordinate : Integer
   {method} +get_neighbour(Direction) : Point
   {method} +to_s : String
   {method} +==(Point) : Boolean
@@ -58,11 +58,10 @@ class "Point" {
 "StandardError" <|-- "ItemExistsError"
 "StandardError" <|-- "ItemNotFoundError"
 "StandardError" <|-- "OutOfBoundsError"
-"GridItem" <|.. "Kangaroo"
-"Grid" --> "GridItem" : items
 "Grid" --> "Point" : items
 "Kangaroo" --> "Die" : die
 "Kangaroo" --> "Grid" : use
+"Kangaroo" --> "Home" : use
 "OutOfBoundsError" --> "Point" : location
 "Point" --> "Direction" : use
 @enduml

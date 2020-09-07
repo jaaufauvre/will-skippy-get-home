@@ -2,7 +2,6 @@ package org.my_projects.skippy.kangaroo;
 
 import org.junit.jupiter.api.Test;
 import org.my_projects.skippy.grid.Grid;
-import org.my_projects.skippy.grid.GridItem;
 import org.my_projects.skippy.grid.Point;
 
 import java.io.ByteArrayOutputStream;
@@ -35,7 +34,7 @@ class KangarooTest {
         // GIVEN
         var grid = new Grid(5);
         var kangaroo = new Kangaroo();
-        var home = new GridItem() {};
+        var home = new Home();
         grid.placeItem(kangaroo, new Point(0, 0));
         grid.placeItem(home, new Point(4, 4));
 

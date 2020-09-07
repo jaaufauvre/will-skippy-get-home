@@ -15,7 +15,7 @@ public final class Grid {
     private final long dimension;
 
     /** Items placed on the grid so far */
-    private final ConcurrentHashMap<GridItem, Point> items = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<Object, Point> items = new ConcurrentHashMap<>();
 
     public Grid(long dimension) throws IllegalArgumentException {
         if (dimension < 1) {
@@ -24,7 +24,7 @@ public final class Grid {
         this.dimension = dimension;
     }
 
-    public void placeItem(GridItem item, Point location) throws ItemExistsException, OutOfBoundsException {
+    public void placeItem(Object item, Point location) throws ItemExistsException, OutOfBoundsException {
         if (items.containsKey(item)) {
             throw new ItemExistsException();
         }
@@ -32,7 +32,7 @@ public final class Grid {
         items.put(item, location);
     }
 
-    public Point moveItem(GridItem item, Direction direction) throws ItemNotFoundException, OutOfBoundsException {
+    public Point moveItem(Object item, Direction direction) throws ItemNotFoundException, OutOfBoundsException {
         if (!items.containsKey(item)) {
             throw new ItemNotFoundException();
         }
@@ -43,7 +43,7 @@ public final class Grid {
         return newLocation;
     }
 
-    public Point getItemLocation(GridItem item) throws ItemNotFoundException {
+    public Point getItemLocation(Object item) throws ItemNotFoundException {
         if (!items.containsKey(item)) {
             throw new ItemNotFoundException();
         }

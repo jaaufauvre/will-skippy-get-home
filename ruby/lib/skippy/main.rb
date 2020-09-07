@@ -17,7 +17,7 @@ module Skippy
       grid.place_item(skippy, Grid::Point.new(0, 0))
 
       # Place Skippy's home on the grid
-      home = Grid::GridItem.new
+      home = Kangaroo::Home.new
       grid.place_item(home, Grid::Point.new(dimension - 1, dimension - 1))
 
       # Ask skippy to find his home

@@ -5,17 +5,17 @@ module Skippy
     # A square grid with items placed on it.
     class Grid
       def initialize(dimension)
-        raise ArgumentError, 'Dimension of the grid must be a positive integer!' if dimension < 1
+        raise ArgumentError, 'Dimension of the grid must be a positive integer!' unless positive_integer?(dimension)
 
         @dimension = dimension
         # Items placed on the grid so far
         @items = {}
       end
 
-      def get_item_location(grid_item)
-        raise ItemNotFoundError, 'The item is not on the grid!' unless @items.key?(grid_item)
-
-        @items[grid_item]
+      def positive_integer?(dimension)
+        dimension.positive? && dimension == Integer(dimension)
+      rescue StandardError
+        false
       end
 
       def place_item(grid_item, location)
@@ -23,6 +23,12 @@ module Skippy
 
         check_bounds(location)
         @items[grid_item] = location
+      end
+
+      def get_item_location(grid_item)
+        raise ItemNotFoundError, 'The item is not on the grid!' unless @items.key?(grid_item)
+
+        @items[grid_item]
       end
 
       def move_item(grid_item, direction)

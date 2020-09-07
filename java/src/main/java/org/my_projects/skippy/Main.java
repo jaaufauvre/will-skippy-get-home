@@ -1,8 +1,8 @@
 package org.my_projects.skippy;
 
 import org.my_projects.skippy.grid.Grid;
-import org.my_projects.skippy.grid.GridItem;
 import org.my_projects.skippy.grid.Point;
+import org.my_projects.skippy.kangaroo.Home;
 import org.my_projects.skippy.kangaroo.Kangaroo;
 import org.my_projects.skippy.direction.Die;
 
@@ -22,7 +22,7 @@ public class Main {
         grid.placeItem(skippy, new Point(0, 0));
 
         // Place Skippy's home on the grid
-        var home = new GridItem() {};
+        var home = new Home();
         grid.placeItem(home, new Point(dimension - 1, dimension - 1));
 
         // Ask skippy to find his home

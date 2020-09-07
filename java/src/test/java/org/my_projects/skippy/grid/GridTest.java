@@ -24,7 +24,7 @@ class GridTest {
     void placeItem_ShouldPlaceItemAtGivenLocation() throws Exception {
 
         // GIVEN
-        var gridItem = new GridItem() {};
+        var gridItem = new Object();
         var grid = new Grid(10);
 
         // WHEN
@@ -38,7 +38,7 @@ class GridTest {
     void placeItem_ShouldThrowItemExistsException_WhenItemAlreadyOnTheGrid() throws Exception {
 
         // GIVEN
-        var gridItem = new GridItem() {};
+        var gridItem = new Object();
         var grid = new Grid(2);
         grid.placeItem(gridItem, new Point(0, 0));
 
@@ -53,7 +53,7 @@ class GridTest {
     void placeItem_ShouldThrowOutOfBoundsException_WhenItemPlacedOutsideTheGrid() {
 
         // GIVEN
-        var gridItem = new GridItem() {};
+        var gridItem = new Object();
         var grid = new Grid(1);
 
         // WHEN & THEN
@@ -68,7 +68,7 @@ class GridTest {
     void moveItem_ShouldMoveItemInTheGivenDirection() throws Exception {
 
         // GIVEN
-        var gridItem = new GridItem() {};
+        var gridItem = new Object();
         var grid = new Grid(10);
         grid.placeItem(gridItem, new Point(3, 4));
 
@@ -87,7 +87,7 @@ class GridTest {
     void moveItem_ShouldThrowOutOfBoundsException_WhenItemMovedOutsideTheGrid() throws Exception {
 
         // GIVEN
-        var gridItem = new GridItem() {};
+        var gridItem = new Object();
         var grid = new Grid(1);
         grid.placeItem(gridItem, new Point(0, 0));
 
@@ -103,7 +103,7 @@ class GridTest {
     void moveItem_ShouldThrowItemNotFoundException_WhenItemNotOnTheGrid() {
 
         // GIVEN
-        var gridItem = new GridItem() {};
+        var gridItem = new Object();
         var grid = new Grid(1);
 
         // WHEN & THEN
@@ -117,7 +117,7 @@ class GridTest {
     void getItemLocation_ShouldReturnItemLocation() throws Exception {
 
         // GIVEN
-        var gridItem = new GridItem() {};
+        var gridItem = new Object();
         var grid = new Grid(10);
         grid.placeItem(gridItem, new Point(4, 5));
 
@@ -129,7 +129,7 @@ class GridTest {
     void getItemLocation_ShouldThrowItemNotFoundException_WhenItemNotOnTheGrid() {
 
         // GIVEN
-        var gridItem = new GridItem() {};
+        var gridItem = new Object();
         var grid = new Grid(1);
 
         // WHEN & THEN

@@ -2,13 +2,12 @@ package org.my_projects.skippy.kangaroo;
 
 import org.my_projects.skippy.direction.Die;
 import org.my_projects.skippy.grid.Grid;
-import org.my_projects.skippy.grid.GridItem;
 import org.my_projects.skippy.grid.exception.ItemNotFoundException;
 import org.my_projects.skippy.grid.exception.OutOfBoundsException;
 
 import java.text.MessageFormat;
 
-public final class Kangaroo implements GridItem {
+public final class Kangaroo {
 
     private final Die die = Die.getInstance();
 
@@ -23,7 +22,7 @@ public final class Kangaroo implements GridItem {
      * Ask the kangaroo to find its home on the grid.
      * The kangaroo’s strategy to find his way home is to take random hops either North, South, East or West.
      */
-    public void findHome(Grid grid, GridItem home) throws ItemNotFoundException {
+    public void findHome(Grid grid, Home home) throws ItemNotFoundException {
         var hopCount = 0L;
         while (!grid.getItemLocation(this).equals(grid.getItemLocation(home))) {
             takeRandomHop(grid);

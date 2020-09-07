@@ -11,14 +11,19 @@ describe Skippy::Grid::Grid do
     error2 = assert_raises ArgumentError do
       Skippy::Grid::Grid.new(-10)
     end
+    error3 = assert_raises ArgumentError do
+      Skippy::Grid::Grid.new('not an integer')
+    end
+    error4 = assert_raises ArgumentError do
+      Skippy::Grid::Grid.new(1.5)
+    end
     expected_error_message = 'Dimension of the grid must be a positive integer!'
-    _(error1.message).must_equal(expected_error_message)
-    _(error2.message).must_equal(expected_error_message)
+    [error1, error2, error3, error4].each { |e| _(e.message).must_equal(expected_error_message) }
   end
 
   it 'should place item at the given location' do
     # GIVEN
-    grid_item = Skippy::Grid::GridItem.new
+    grid_item = Object.new
     grid = Skippy::Grid::Grid.new(10)
 
     # WHEN
@@ -30,7 +35,7 @@ describe Skippy::Grid::Grid do
 
   it 'should raise ItemExistsError when placing an item already on the grid' do
     # GIVEN
-    grid_item = Skippy::Grid::GridItem.new
+    grid_item = Object.new
     grid = Skippy::Grid::Grid.new(2)
     grid.place_item(grid_item, Skippy::Grid::Point.new(0, 0))
 
@@ -43,7 +48,7 @@ describe Skippy::Grid::Grid do
 
   it 'should raise OutOfBoundsError when an item is placed outside the grid' do
     # GIVEN
-    grid_item = Skippy::Grid::GridItem.new
+    grid_item = Object.new
     grid = Skippy::Grid::Grid.new(1)
 
     # WHEN & THEN
@@ -56,7 +61,7 @@ describe Skippy::Grid::Grid do
 
   it 'should move item in the given direction' do
     # GIVEN
-    grid_item = Skippy::Grid::GridItem.new
+    grid_item = Object.new
     grid = Skippy::Grid::Grid.new(10)
     grid.place_item(grid_item, Skippy::Grid::Point.new(3, 4))
 
@@ -73,7 +78,7 @@ describe Skippy::Grid::Grid do
 
   it 'should raise OutOfBoundsError when an item is moved outside the grid' do
     # GIVEN
-    grid_item = Skippy::Grid::GridItem.new
+    grid_item = Object.new
     grid = Skippy::Grid::Grid.new(1)
     grid.place_item(grid_item, Skippy::Grid::Point.new(0, 0))
 
@@ -87,7 +92,7 @@ describe Skippy::Grid::Grid do
 
   it 'should raise ItemNotFoundError when moving an item not on the grid' do
     # GIVEN
-    grid_item = Skippy::Grid::GridItem.new
+    grid_item = Object.new
     grid = Skippy::Grid::Grid.new(1)
 
     # WHEN & THEN
@@ -99,7 +104,7 @@ describe Skippy::Grid::Grid do
 
   it 'should return item location' do
     # GIVEN
-    grid_item = Skippy::Grid::GridItem.new
+    grid_item = Object.new
     grid = Skippy::Grid::Grid.new(10)
     grid.place_item(grid_item, Skippy::Grid::Point.new(3, 4))
 
@@ -109,7 +114,7 @@ describe Skippy::Grid::Grid do
 
   it 'should raise ItemNotFoundError when requesting location of an item not on the grid' do
     # GIVEN
-    grid_item = Skippy::Grid::GridItem.new
+    grid_item = Object.new
     grid = Skippy::Grid::Grid.new(1)
 
     # WHEN & THEN
