@@ -5,8 +5,8 @@ class "Die" {
   {field} {static} -instance: Die
   {field} -history : Map<Direction, long>
   {field} -random : Random
-  {method} +printStats()
-  {method} +roll() : Direction
+  {method} +print_stats
+  {method} +roll : Direction
 }
 
 enum "Direction" {
@@ -19,48 +19,50 @@ enum "Direction" {
 class "Grid" {
   {field} -dimension : long
   {field} -items : Map<GridItem, Point>
-  {method} +getItemLocation(GridItem) : Point
-  {method} +moveItem(GridItem, Direction) : Point
-  {method} +placeItem(GridItem, Point)
+  {method} +get_item_location(GridItem) : Point
+  {method} +move_item(GridItem, Direction) : Point
+  {method} +place_item(GridItem, Point)
 }
 
-class "GridException" {
-  {field} +message : string
+class "StandardError" {
+  {field} +message : String
 }
 
 interface "GridItem"
 
-class "ItemExistsException"
+class "ItemExistsError"
 
-class "ItemNotFoundException"
+class "ItemNotFoundError"
 
 class "Kangaroo" {
   {field} -die : Die
   {method} +chortle(String)
-  {method} +findHome(Grid, GridItem)
+  {method} +find_home(Grid, GridItem)
 }
 
-class "OutOfBoundsException" {
+class "OutOfBoundsError" {
   {field} +location : Point
 }
 
 class "Point" {
-  {field} +xCoordinate : long
-  {field} +yCoordinate : long
-  {method} +getNeighbour(Direction) : Point
+  {field} +x_coordinate : long
+  {field} +y_coordinate : long
+  {method} +get_neighbour(Direction) : Point
+  {method} +to_s : String
+  {method} +==(Point) : Boolean
 }
 
 "Die" --> "Die" : instance
 "Die" --> "Direction" : history
 "Grid" --> "Direction" : use
-"GridException" <|-- "ItemExistsException"
-"GridException" <|-- "ItemNotFoundException"
-"GridException" <|-- "OutOfBoundsException"
+"StandardError" <|-- "ItemExistsError"
+"StandardError" <|-- "ItemNotFoundError"
+"StandardError" <|-- "OutOfBoundsError"
 "GridItem" <|.. "Kangaroo"
 "Grid" --> "GridItem" : items
 "Grid" --> "Point" : items
 "Kangaroo" --> "Die" : die
 "Kangaroo" --> "Grid" : use
-"OutOfBoundsException" --> "Point" : location
+"OutOfBoundsError" --> "Point" : location
 "Point" --> "Direction" : use
 @enduml

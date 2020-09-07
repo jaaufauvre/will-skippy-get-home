@@ -6,7 +6,12 @@
 Will Skippy Get Home? 
 
 ## Overview
-See [Part I: Basic Simulation](https://csserver.ucd.ie/~meloc/MScASE/resources/skippy.pdf)
+A lost, blind kangaroo (Skippy) starts in position `(0,0)` of a grid, and is trying to get home, which happens to be at cell `(dimension - 1, dimension - 1)`. 
+His strategy is to take random hops either `Direction::NORTH`, `Direction::SOUTH`, `Direction::EAST` or `Direction::WEST` (with equal probability), without exiting the grid of course. 
+
+The question is, will this strategy get Skippy home, or will he hop around the grid forever?
+
+More at: [Part I: Basic Simulation](https://csserver.ucd.ie/~meloc/MScASE/resources/skippy.pdf)
 
 ## Compatibility
 * Java 10+
@@ -46,11 +51,11 @@ North: 24.9% South: 25.1% East: 25.1% West: 25.0%
 ```
 
 ## Design Notes
-* `Grid` is a container with items on it. It provides methods for updating item locations (`placeItem`, `moveItem`) and makes it impossible for items to exit the grid (`OutOfBoundsException`)
-* Skippy is an instance of `Kangaroo`. He is responsible for finding his way back to home (`findHome`). `Kangaroo` encapsulates this strategy: kangaroos roll the die and hop around the grid, instead of someone else rolling the die and making them hop.
-* `Die` is a Singleton: we only need one die and one type of die in this exercise
-* `Die` records and prints the throw history and statistics
-* The outputs of this program are because of Skippy chortling or the die being asked to print its statistics.
+* `Grid` is a container with items on it. It provides methods for updating and retrieving item locations (`place_item`, `move_item`, `get_item_location`) and makes it impossible for items to exit the grid (`OutOfBoundsError`)
+* Skippy is an instance of `Kangaroo`. He is responsible for finding his way back to home (`find_home`). `Kangaroo` encapsulates this strategy: kangaroos roll the die and hop around the grid, instead of someone else rolling the die and making them hop.
+* `Die` is a Singleton: we only need one die and one type of die in this exercise. It records its history and prints its own statistics.
+* Classes are grouped into 3 modules: `Skippy::Direction`, `Skippy::Grid` and `Skippy::Kangaroo`
+* The outputs of this program are because of Skippy chortling or the die printing its statistics.
 
 [![](./uml/skippy-plantuml.svg)](./uml/skippy-plantuml.svg)
 
