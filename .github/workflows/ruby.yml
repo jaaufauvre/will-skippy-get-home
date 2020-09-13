@@ -12,6 +12,8 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  schedule:
+    - cron: "0 16 * * *"
 
 jobs:
   test:
@@ -21,13 +23,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
-    # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
-    # change this to (see https://github.com/ruby/setup-ruby#versioning):
-    # uses: ruby/setup-ruby@v1
-      uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
+      uses: ruby/setup-ruby@v1
       with:
         ruby-version: 2.7
     - name: Install dependencies
       run: cd ruby && bundle install
     - name: Run tests
       run: cd ruby && bundle exec rake
+    - name: Package
+      run: cd ruby && gem build *.gemspec
